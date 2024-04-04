@@ -10,6 +10,8 @@ class Product {
     public $category;
 
     public $image;
+
+    protected $type;
     
     /**
      * __construct
@@ -25,6 +27,18 @@ class Product {
         $this->price = $price;
         $this->category = $category;
     }
+    
+    /**
+     * setImage
+     *
+     * @param  string $image
+     */
+    public function setImage($image) {
+        $this->image = $image;
+    }
 
 
+    public function getType() {
+        return $this->type;
+    }
 }

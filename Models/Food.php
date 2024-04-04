@@ -24,6 +24,9 @@ class Food extends Product {
         $this->weight = $weight;
         $this->mainIngredient = $mainIngredient;
         $this->expireDate = $expireDate;
+
+        // specifico che la categoria di questo prodotto è "cibo"
+        $this->type = 'Cibo';
     }
 
 }

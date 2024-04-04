@@ -17,5 +17,6 @@ class Toy extends Product {
         parent::__construct($id, $name, $price, $category);
         $this->material = $material;
         
+        $this->type = "Gioco";
     }
 }
