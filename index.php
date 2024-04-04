@@ -83,6 +83,30 @@ var_dump($products);
                         <h6 class="text-secondary"><small>(<?= $product->getType() ?>)</small></h6>
                         <p class="card-text">€<?= $product->price ?></p>
                         <a href="#" class="btn btn-primary">Acquista</a>
+
+                        <div class="details">
+                            <ul>
+                                <?php
+
+                                // controlliamo di che tipo sia il prodotto
+                                if($product instanceof Food) {
+                                    echo '<li>Peso: ' . $product->weight . 'kg</li>' ;
+                                    echo '<li>Ingrediente principale: ' . $product->mainIngredient . '</li>' ;
+
+                                } else if($product instanceof Toy) {
+
+                                    echo '<li>Materiale: ' . $product->material . '</li>' ;
+
+                                } else if($product instanceof Kennel) { 
+
+                                    echo '<li>Taglia '. $product->size . '</li>';
+                                    
+                                }
+
+                                
+                                ?>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
