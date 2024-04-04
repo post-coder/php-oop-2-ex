@@ -6,6 +6,9 @@ require_once './Models/Food.php';
 require_once './Models/Toy.php';
 require_once './Models/Kennel.php';
 
+require_once './Models/Client.php';
+require_once './Models/PremiumClient.php';
+
 // creiamo le categorie
 $catCategory = new Category("Gatti", "fa-cat");
 $dogCategory = new Category("Cani", "fa-dog");
@@ -36,7 +39,29 @@ $products = [
     $cuccia
 ];
 
-var_dump($products);
+// var_dump($products);
+
+
+
+
+// creo un nuovo cliente
+$client = new Client("gab", "Via del codice 47");
+
+$client->addToCart($cuccia);
+$client->addToCart($pallina);
+
+// var_dump($client);
+echo "totale utente normale: " . $client->getCartTotal();
+
+$premiumClient = new PremiumClient("mario@mail.com", "Via dei Funghi 1", "mariobros");
+$premiumClient->addToCart($cuccia);
+$premiumClient->addToCart($pallina);
+var_dump($premiumClient);
+
+echo "totale utente premium: " . $premiumClient->getCartTotal();
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -100,7 +125,7 @@ var_dump($products);
                                 } else if($product instanceof Kennel) { 
 
                                     echo '<li>Taglia '. $product->size . '</li>';
-                                    
+
                                 }
 
                                 
