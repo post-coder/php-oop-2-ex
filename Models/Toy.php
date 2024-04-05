@@ -1,8 +1,11 @@
 <?php
 
+require_once __DIR__ .'./Traits/HasMaterial.php';
 
 class Toy extends Product {
-    public $material;    
+
+    use HasMaterial;
+
     /**
      * __construct
      *
@@ -12,10 +15,10 @@ class Toy extends Product {
      * @param  Category $category
      * @param  string $material
      */
-    function __construct($id, $name, $price, Category $category, $material) { 
+    function __construct($id, $name, $price, Category $category) { 
 
         parent::__construct($id, $name, $price, $category);
-        $this->material = $material;
+
         
         $this->type = "Gioco";
     }

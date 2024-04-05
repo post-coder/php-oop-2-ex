@@ -2,9 +2,11 @@
 
 require_once __DIR__ . '/Product.php';
 
+require_once __DIR__ . '/Traits/HasDimension.php';
+
 class Food extends Product {
 
-    public $weight;
+    use HasDimension;
     public $mainIngredient;
     public $expireDate;
     
@@ -19,9 +21,9 @@ class Food extends Product {
      * @param  string $mainIngredient
      * @param  string $expireDate
      */
-    function __construct($id, $name, $price, Category $category, $weight, $mainIngredient, $expireDate) {
+    function __construct($id, $name, $price, Category $category, $mainIngredient, $expireDate) {
         parent::__construct($id, $name, $price, $category);
-        $this->weight = $weight;
+        // $this->weight = $weight;
         $this->mainIngredient = $mainIngredient;
         $this->expireDate = $expireDate;
 

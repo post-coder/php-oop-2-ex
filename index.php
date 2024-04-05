@@ -19,16 +19,20 @@ $dogCategory = new Category("Cani", "fa-dog");
 
 
 // cibo
-$crocchette = new Food(123, "Crocchette Crock", 3.14, $catCategory, 0.5, 'pesce', '10/24');
+$crocchette = new Food(123, "Crocchette Crock", 3.14, $catCategory, 'pesce', '10/24');
 $crocchette->setImage('https://m.media-amazon.com/images/I/71gB-bzxJmL._AC_UF1000,1000_QL80_.jpg');
+$crocchette->setDimension('0.5');
 
 // giocattolo
-$pallina = new Toy(312, "Pallina Pally", 1, $dogCategory, "Gomma");
+$pallina = new Toy(312, "Pallina Pally", 1, $dogCategory);
 $pallina->setImage("https://m.media-amazon.com/images/I/61i3OJ4EycL._AC_UF894,1000_QL80_.jpg");
+$pallina->setMaterial("gomma");
 
 // cuccia
 $cuccia = new Kennel(41, "Cuccia Blu", 7, $dogCategory, "medium");
 $cuccia->setImage("https://www.original-legno.com/wp-content/uploads/2021/06/Cucce_in_legno_italy_con_veranda_per_cani_in_4_misure-1.webp");
+$cuccia->setMaterial("stoffa");
+$cuccia->setDimension("medium");
 
 // var_dump($cuccia);
 
@@ -39,7 +43,7 @@ $products = [
     $cuccia
 ];
 
-// var_dump($products);
+var_dump($products);
 
 
 
@@ -51,14 +55,14 @@ $client->addToCart($cuccia);
 $client->addToCart($pallina);
 
 // var_dump($client);
-echo "totale utente normale: " . $client->getCartTotal();
+// echo "totale utente normale: " . $client->getCartTotal();
 
 $premiumClient = new PremiumClient("mario@mail.com", "Via dei Funghi 1", "mariobros");
 $premiumClient->addToCart($cuccia);
 $premiumClient->addToCart($pallina);
-var_dump($premiumClient);
+// var_dump($premiumClient);
 
-echo "totale utente premium: " . $premiumClient->getCartTotal();
+// echo "totale utente premium: " . $premiumClient->getCartTotal();
 
 
 
@@ -115,12 +119,12 @@ echo "totale utente premium: " . $premiumClient->getCartTotal();
 
                                 // controlliamo di che tipo sia il prodotto
                                 if($product instanceof Food) {
-                                    echo '<li>Peso: ' . $product->weight . 'kg</li>' ;
+                                    echo '<li>Peso: ' . $product->getDimension() . 'kg</li>' ;
                                     echo '<li>Ingrediente principale: ' . $product->mainIngredient . '</li>' ;
 
                                 } else if($product instanceof Toy) {
 
-                                    echo '<li>Materiale: ' . $product->material . '</li>' ;
+                                    echo '<li>Materiale: ' . $product->getMaterial() . '</li>' ;
 
                                 } else if($product instanceof Kennel) { 
 

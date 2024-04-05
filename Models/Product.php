@@ -24,7 +24,14 @@ class Product {
     function __construct($id, $name, $price, Category $category) {
         $this->id = $id;
         $this->name = $name;
-        $this->price = $price;
+
+        // $this->price = $price;
+
+        if(is_numeric($price)) {
+            $this->price = $price;
+        } else {
+            throw new Exception("Inserisci un prezzo corretto");
+        }
         $this->category = $category;
     }
     
