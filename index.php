@@ -23,6 +23,14 @@ $crocchette = new Food(123, "Crocchette Crock", 3.14, $catCategory, 'pesce', '10
 $crocchette->setImage('https://m.media-amazon.com/images/I/71gB-bzxJmL._AC_UF1000,1000_QL80_.jpg');
 $crocchette->setDimension('0.5');
 
+try {
+
+    $crocchette->setPrice(3.5);
+
+} catch (Exception $e) {
+    $errorMessage = $e->getMessage();
+}
+
 // giocattolo
 $pallina = new Toy(312, "Pallina Pally", 1, $dogCategory);
 $pallina->setImage("https://m.media-amazon.com/images/I/61i3OJ4EycL._AC_UF894,1000_QL80_.jpg");
@@ -43,7 +51,7 @@ $products = [
     $cuccia
 ];
 
-var_dump($products);
+// var_dump($products);
 
 
 
@@ -59,10 +67,10 @@ $client->addToCart($pallina);
 
 $premiumClient = new PremiumClient("mario@mail.com", "Via dei Funghi 1", "mariobros");
 $premiumClient->addToCart($cuccia);
-$premiumClient->addToCart($pallina);
+$premiumClient->addToCart($crocchette);
 // var_dump($premiumClient);
 
-// echo "totale utente premium: " . $premiumClient->getCartTotal();
+echo "totale utente premium: " . $premiumClient->getCartTotal();
 
 
 
@@ -95,6 +103,16 @@ $premiumClient->addToCart($pallina);
     <h1>
         PHP - Shop
     </h1>
+
+    <?php
+    if(isset($errorMessage)) {
+        ?>
+        <div class="alert alert-danger" role="alert">
+        <?= $errorMessage ?>
+        </div>
+        <?php
+    }
+    ?>
 
     <div class="row row-cols-2 row-gap-4">
 

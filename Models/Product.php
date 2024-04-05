@@ -48,4 +48,24 @@ class Product {
     public function getType() {
         return $this->type;
     }
+    
+    /**
+     * setPrice
+     *
+     * @param  float $price
+     */
+    public function setPrice($price) {
+
+        // controlliamo che il prezzo fornito sia effettivamente un numero
+
+        if(is_numeric($price)) {
+
+            $this->price = $price;
+
+        } else {
+            throw new Exception("Inserisci un valore numerico per il prezzo");
+        }
+        
+
+    }
 }
